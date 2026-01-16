@@ -1,11 +1,9 @@
-import Header from "../components/Header";
+import Aside from "../components/Aside";
 
 const Home: React.FC = () => {
     return (
         <div className="main">
-            <Header />
-
-            <h1>Welcome to the Home Page</h1>
+            <Aside isCollapsed={false} />
         </div>
     );
 };
