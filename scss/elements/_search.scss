@@ -1,0 +1,97 @@
+@use "../base/config" as *;
+@use "sass:color";
+
+.searchbar {
+    position: relative;
+    width: 100%;
+
+    input {
+        width: 100%;
+        max-width: none;
+
+        padding: 20px calc(16px + 60px) 20px calc(16px + 15px + 10px);
+
+        font-size: 1rem;
+        font-weight: 500;
+        color: $text-color;
+
+        border: $border-settings;
+        border-radius: 10px;
+
+        box-shadow: none;
+        background-color: $bg-color;
+
+        &::placeholder {
+            color: #777e8f;
+        }
+
+        &:focus,
+        &:focus-within,
+        &:focus-visible {
+            border-color: $secondary-color;
+            outline: none;
+        }
+    }
+
+    &:has(input:focus),
+    &:has(input:focus-within),
+    &:has(input:focus-visible) {
+        .searchbar__icon i {
+            color: $secondary-color;
+        }
+
+        .searchbar__button i {
+            color: #777e8f;
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        width: calc(16px + 15px);
+
+        i {
+            color: #777e8f;
+            font-size: 15px;
+        }
+    }
+
+    &__button {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        width: 60px;
+        padding-right: 18px;
+
+        transition: $default-transition;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        i {
+            color: $secondary-color;
+            font-size: 1rem;
+        }
+    }
+}
+
+.highlight {
+    background-color: color.adjust($subtext-color, $lightness: -10%);
+    color: $white-color;
+    padding: 0 2px;
+    border-radius: 2px;
+}

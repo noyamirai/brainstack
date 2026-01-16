@@ -1,0 +1,200 @@
+@use "sass:color";
+@use "../base/config" as *;
+
+// general reset
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+.btn {
+    position: relative;
+    display: inline-block;
+    padding: 16px 12px;
+
+    width: auto;
+
+    color: $bg-color;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+
+    cursor: pointer;
+
+    background-color: $secondary-color;
+    border-radius: 8px;
+    border: none;
+
+    transition: all 350ms ease-in-out;
+
+    i {
+        margin: 0 0.25em;
+    }
+
+    &.skeleton {
+        pointer-events: none;
+        user-select: none;
+        border: none;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            background-color: $secondary-color-dark;
+        }
+    }
+
+    &--block {
+        display: block;
+        width: 100%;
+    }
+
+    & + & {
+        margin-top: 12px;
+    }
+
+    &.hide {
+        display: none;
+    }
+
+    &--icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        $btn-size: 65px;
+
+        width: $btn-size;
+        max-width: $btn-size;
+        min-width: $btn-size;
+
+        height: $btn-size;
+        max-height: $btn-size;
+        min-height: $btn-size;
+
+        padding: 0;
+        border-radius: 50%;
+        margin: 0;
+
+        i {
+            font-size: 20px;
+            margin: 0;
+        }
+    }
+
+    &--ghost {
+        border: $border-settings;
+        background-color: $bg-color;
+        color: $secondary-color;
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                background-color: #141a1a;
+            }
+        }
+
+        &.btn--error {
+            font-weight: 400;
+            border-color: $error-color;
+            color: $error-color;
+
+            &:active {
+                font-weight: 600;
+            }
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    font-weight: 600;
+                    background-color: color.adjust(
+                        $error-color,
+                        $lightness: -5%
+                    );
+                    color: $bg-color;
+                }
+            }
+        }
+    }
+
+    &--next,
+    &--prev,
+    &--back {
+        transition: $default-transition;
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    &--next {
+        position: fixed;
+        // bottom: 1.5rem;
+        right: 20px;
+        z-index: 10;
+
+        bottom: calc(1.5rem + var(--viewport-offset, 0px));
+    }
+
+    &--prev {
+        position: fixed;
+        // bottom: 1.5rem;
+        left: 20px;
+        z-index: 10;
+
+        bottom: calc(1.5rem + var(--viewport-offset, 0px));
+
+        color: $text-color;
+        background-color: $line-color;
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                background-color: color.adjust($line-color, $lightness: -5%);
+            }
+        }
+    }
+
+    &--back {
+        position: fixed;
+        bottom: 1.5rem;
+        left: 20px;
+        z-index: 10;
+    }
+
+    &--success {
+        background-color: $success-color;
+    }
+
+    &--scroll-top {
+        position: fixed;
+        bottom: calc($tabbar-height + 1.5rem);
+        left: 1.5rem;
+        z-index: 10;
+
+        opacity: 0;
+
+        transform: translateY(100%);
+        transition: all 350ms ease-in-out;
+
+        &.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+
+    &--small {
+        padding: 12px 18px;
+    }
+}

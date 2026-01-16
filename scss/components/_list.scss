@@ -1,0 +1,89 @@
+@use "../base/config" as *;
+
+.list {
+    &__item {
+        border-top: $border-settings;
+        border-bottom: $border-settings;
+
+        &:has(a) {
+            a {
+                display: grid;
+                grid-template-columns: 1fr 60px;
+
+                font-weight: 300;
+                color: $text-color;
+                text-decoration: none;
+
+                // &:hover {
+                //     .list__item__title {
+                //         color: $secondary-color;
+                //     }
+                // }
+                &:focus,
+                &:active {
+                    outline: none;
+                    .list__item__title {
+                        color: $secondary-color;
+                    }
+                }
+
+                @media (hover: hover) and (pointer: fine) {
+                    &:hover {
+                        .list__item__title {
+                            color: $secondary-color;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 3px;
+            padding: 1.5rem 20px;
+            transition: $default-transition;
+
+            & > * {
+                margin: 0;
+            }
+        }
+
+        &__meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-left: $border-settings;
+            text-transform: uppercase;
+        }
+
+        &__title {
+            font-weight: 700;
+            color: $white-color;
+
+            &:has(+ .tags) {
+                margin-bottom: 6px;
+            }
+
+            &:has(.tags.skeleton) {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .stats-grid + & {
+        .list__item:first-of-type {
+            border-top: none;
+        }
+    }
+}
+
+.list__item + .list__item {
+    border-top: none;
+}
+
+.header + .list__item {
+    border-top: none;
+}

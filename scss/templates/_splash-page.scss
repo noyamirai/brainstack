@@ -1,0 +1,48 @@
+@use "../base/config" as *;
+
+.splash-page {
+    position: relative;
+    height: 100%;
+
+    main,
+    .App {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        flex: 1;
+
+        padding: 0 20px 0 20px !important;
+    }
+
+    .logo-container {
+        max-width: 300px;
+
+        .logo {
+            width: 100%;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+
+    .app-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 100%;
+
+        color: $subtext-color;
+        text-transform: uppercase;
+    }
+}

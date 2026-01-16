@@ -1,0 +1,116 @@
+@use "../base/config" as *;
+
+$itemHeight: 60px;
+$spacing: 10px;
+$itemsPerPage: 5;
+$gapCalculation: $itemsPerPage - 1;
+
+.slider {
+    position: relative;
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__list {
+        flex: 1;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+        gap: $spacing;
+
+        max-height: calc(
+            $itemHeight * $itemsPerPage + $spacing * $gapCalculation
+        );
+
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+        -webkit-overflow-scrolling: touch;
+
+        padding: calc($itemHeight * 2 + $spacing * 2) 1.5rem;
+
+        // Hide scrollbar
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 30px; // adjust height to match desired fade strength
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        &::before {
+            top: 0;
+            background: linear-gradient(
+                to bottom,
+                $bg-color 0%,
+                transparent 100%
+            );
+        }
+
+        &::after {
+            bottom: 0;
+            background: linear-gradient(to top, $bg-color 0%, transparent 100%);
+        }
+
+        &__item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            min-width: 70%;
+            max-width: 100%;
+            min-height: $itemHeight;
+            max-height: $itemHeight;
+            padding: 0 12px;
+
+            background-color: $bg-color;
+            border: 3px solid transparent;
+            border-radius: calc($itemHeight / 2);
+
+            scroll-snap-align: center;
+
+            transition: all 0.2s ease-in-out;
+            border-color: transparent;
+            opacity: 1;
+
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+
+            p {
+                color: #bec3e2;
+                font-size: 20px;
+                font-weight: 500;
+                text-align: center;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            &.active {
+                border-color: #d3d6e9;
+                transform: scale(1.05);
+
+                p {
+                    color: $primary-color;
+                    font-weight: 700;
+                }
+            }
+
+            &.faded {
+                opacity: 0.45;
+                transform: scale(0.95);
+            }
+        }
+    }
+}

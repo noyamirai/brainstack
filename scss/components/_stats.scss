@@ -1,0 +1,45 @@
+@use "../base/config" as *;
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: $line-color;
+    gap: 1px;
+    padding: 1px 0;
+
+    .header + & {
+        padding-top: 0;
+    }
+
+    & > .stats-item {
+        border: none;
+    }
+}
+
+.stats-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 1.2rem 20px;
+    background-color: $bg-color;
+    border: $border-settings;
+
+    .label {
+        font-weight: 300;
+        color: $text-color;
+    }
+
+    .value {
+        font-size: 22px;
+        letter-spacing: 3px;
+        font-weight: 300;
+        color: $white-color;
+    }
+
+    .loader {
+        border-top: none;
+        margin: 0;
+        padding: 0;
+    }
+}

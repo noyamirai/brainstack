@@ -1,0 +1,76 @@
+@use "../base/config" as *;
+
+.qr-wrapper {
+    width: 100%;
+    height: 105px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .loader {
+        background-color: $line-color;
+        width: 105px;
+        height: 105px;
+        border-radius: 8px;
+    }
+
+    .placeholder {
+        width: 105px;
+        height: 105px;
+        border-radius: 8px;
+        background-color: $line-color;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: $text-color;
+        font-size: 20px;
+
+        i {
+            color: inherit;
+            font-size: inherit;
+        }
+    }
+}
+
+.copy-field {
+    display: grid;
+    grid-template-columns: 1fr 50px;
+
+    border-top: $border-settings;
+    border-bottom: $border-settings;
+
+    padding: 1rem 20px;
+    text-align: left;
+    width: 100%;
+
+    &:hover {
+        color: $secondary-color !important;
+        .copy-field__value,
+        .copy-field__action {
+            color: $secondary-color !important;
+        }
+    }
+
+    &__value {
+        font-size: 18px;
+        letter-spacing: 3px;
+        font-weight: 300;
+        color: $white-color;
+        word-break: break-all;
+    }
+
+    &__action {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        text-align: right;
+        color: $secondary-color;
+    }
+}
+
+.copy-field + .copy-field {
+    border-top: none;
+}

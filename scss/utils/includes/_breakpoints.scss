@@ -1,0 +1,24 @@
+@use "sass:map";
+
+@use "../../base/config" as cfg;
+$breakpoints: cfg.$breakpoints;
+
+@function bp($key) {
+    @if map.has-key($breakpoints, $key) {
+        @return map.get($breakpoints, $key);
+    }
+
+    @error "Breakpoint `#{$key}` not found. Available breakpoints: #{map.keys($breakpoints)}";
+}
+
+@mixin from($key) {
+    @media (min-width: #{bp($key)}) {
+        @content;
+    }
+}
+
+@mixin until($key) {
+    @media (max-width: calc(#{bp($key)} - 0.02px)) {
+        @content;
+    }
+}

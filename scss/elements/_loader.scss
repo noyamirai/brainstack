@@ -1,0 +1,108 @@
+@use "../base/config" as *;
+
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 1.5rem;
+    border-top: $border-settings;
+
+    i {
+        color: $text-color;
+        font-size: 20px;
+        animation: rotate 1.5s linear infinite;
+    }
+
+    &.no-border {
+        border-top: none;
+        padding-top: 0;
+    }
+
+    &.page-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: rgba($bg-color, 0.5);
+        backdrop-filter: blur(3px);
+        z-index: 20;
+    }
+}
+
+.list-item-loader {
+    position: relative;
+    border-bottom: 0;
+
+    .list__item__content {
+        opacity: 0;
+    }
+
+    .loader {
+        border-top: none;
+        padding: 0;
+        position: absolute;
+        inset: 0;
+    }
+}
+
+body:has(.tabbar-container) {
+    .list-loader {
+        height: calc($tabbar-height + 80px + 2rem);
+    }
+}
+
+.list-loader {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    max-width: 480px;
+    margin: 0 auto;
+
+    height: calc(80px + 2rem);
+
+    background: $bg-color;
+    background: linear-gradient(
+        0deg,
+        rgb(13, 19, 19) 70%,
+        rgba(13, 19, 19, 0) 100%
+    );
+
+    pointer-events: none;
+    opacity: 0;
+    z-index: 8;
+
+    transition: $default-transition;
+
+    &.active {
+        opacity: 1;
+    }
+
+    i {
+        color: $text-color;
+        font-size: 24px;
+        animation: rotate 1.5s linear infinite;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

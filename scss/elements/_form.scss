@@ -1,0 +1,258 @@
+@use "sass:color";
+@use "../base/config" as *;
+
+form {
+    border: none;
+
+    fieldset {
+        border: none;
+    }
+
+    .btn--ghost {
+        border-color: color.adjust($line-color, $lightness: -5%);
+
+        &:hover {
+            background-color: color.adjust($line-color, $lightness: -5%);
+        }
+    }
+}
+
+.form__section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &.hide {
+        display: none;
+    }
+
+    .loader {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+
+        background-color: $bg-color;
+    }
+}
+
+.form__section.section:first-of-type {
+    padding-top: 0;
+}
+
+.form__section.section:last-of-type {
+    padding-bottom: 5px;
+
+    & + hr {
+        margin-bottom: calc(1.5rem + 5px);
+    }
+}
+
+.form__section.section + .form__section.section {
+    padding-top: 0;
+}
+
+.form__section:not(.section) + .form__section:not(.section),
+.form__section + .btn,
+.form__upload + .btn {
+    margin-top: 1.5rem;
+}
+
+.form__label {
+    color: $text-color;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    small {
+        display: block;
+        color: $subtext-color;
+        font-weight: 400;
+        font-size: 14px;
+        margin-top: 6px;
+    }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="number"] {
+    position: relative;
+
+    border-radius: 10px;
+    border: $border-settings;
+    background-color: $bg-color;
+
+    color: $white-color;
+
+    padding: 1.25rem 1rem;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 1rem;
+
+    width: 100%;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+input[type="tel"]::placeholder,
+input[type="number"]::placeholder {
+    color: #777e8f;
+    font-weight: 300;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus {
+    border-color: $secondary-color;
+    outline: $secondary-color;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+input + .btn,
+textarea + .btn {
+    margin-top: 6px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 150px;
+
+    position: relative;
+
+    border-radius: 10px;
+    border: $border-settings;
+    background-color: $bg-color;
+    font-family: $default-font;
+
+    color: $white-color;
+
+    padding: 1.25rem 1rem;
+    font-weight: 400;
+    line-height: normal;
+    font-size: 1rem;
+
+    &::placeholder {
+        color: #777e8f;
+    }
+
+    &:focus {
+        border-color: $secondary-color;
+        outline: $secondary-color;
+    }
+}
+
+.number-group {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+
+    input {
+        text-align: center;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        /* display: none; <- Crashes Chrome on hover */
+        -webkit-appearance: none;
+        margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    }
+}
+
+.link--select {
+    // position: absolute;
+    // top: 50%;
+    // right: 0;
+
+    // transform: translateY(-50%);
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    cursor: pointer;
+
+    display: inline-block;
+    flex-shrink: 1;
+    min-width: 0;
+    width: auto !important;
+    height: auto !important;
+
+    background-color: transparent;
+    font-size: 1rem;
+    box-shadow: none;
+    border: none;
+    opacity: 1;
+
+    text-align-last: right;
+    text-align: right;
+    text-transform: uppercase;
+
+    padding-inline: 0;
+
+    &:focus-visible {
+        outline: none;
+    }
+}
+
+.meter {
+    display: flex;
+    flex-direction: column;
+    background-color: $line-color;
+    width: 100%;
+    height: 4px;
+    border-radius: 5px;
+
+    overflow: hidden;
+    margin-top: 5px;
+
+    &__progress {
+        position: relative;
+        height: 100%;
+        transition: width 0.3s ease, background-color 0.3s ease;
+
+        &.weak {
+            background-color: $error-color;
+        }
+
+        &.fair {
+            background-color: $warning-color;
+        }
+
+        &.medium {
+            background-color: $secondary-color;
+        }
+
+        &.strong {
+            background-color: $success-color;
+        }
+    }
+}
+
+.password-strength {
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: -5px;
+    &.weak {
+        color: $error-color;
+    }
+
+    &.fair {
+        color: $warning-color;
+    }
+
+    &.medium {
+        color: $secondary-color;
+    }
+
+    &.strong {
+        color: $success-color;
+    }
+}

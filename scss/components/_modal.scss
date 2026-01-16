@@ -1,0 +1,78 @@
+@use "../base/config" as *;
+
+.modal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 200px;
+    padding: 0 24px;
+
+    border-top-left-radius: $mobile-corner-radius;
+    border-top-right-radius: $mobile-corner-radius;
+
+    background-color: #fff;
+
+    transform: translateY(100%);
+    transition-duration: 650ms;
+    transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    z-index: 1;
+
+    &.open {
+        transform: translateY(0);
+    }
+
+    &__header {
+        text-align: center;
+        text-transform: uppercase;
+        color: $subtext-color;
+        font-size: 14px;
+
+        padding: 14px 0 12px 0;
+        border-bottom: 1px solid $line-color;
+    }
+
+    &__content {
+        flex: 1;
+        padding: 24px 0;
+
+        &.center,
+        &.center .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        i {
+            font-size: 32px;
+            color: $icon-color;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-transform: none;
+        }
+
+        .title,
+        .subtitle {
+            margin: 0;
+        }
+
+        .subtitle {
+            margin-top: 6px;
+        }
+    }
+
+    &--fixed {
+        transform: none;
+    }
+}

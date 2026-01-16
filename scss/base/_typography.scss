@@ -1,0 +1,165 @@
+@use "./config" as *;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $heading-font;
+    margin-top: 0;
+    line-height: 1.2;
+    font-weight: 400;
+    color: $heading-color;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 700;
+
+    margin-bottom: 1rem;
+}
+
+h2 {
+    margin-bottom: 1rem;
+
+    font-size: 18px;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+
+    font-weight: 700;
+}
+
+h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+strong {
+    font-weight: bold;
+}
+
+em,
+i {
+    font-style: italic;
+}
+
+p {
+    font-size: 1rem;
+    margin: 0;
+
+    & + * {
+        margin-top: 1rem;
+    }
+}
+
+hgroup {
+    width: 100%;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid $line-color;
+}
+
+a {
+    color: $secondary-color;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+ul,
+ol {
+    padding-left: 0;
+}
+
+ol {
+    list-style: decimal;
+}
+
+.heading {
+    font-weight: 700;
+    font-size: 19px;
+    font-family: $heading-font;
+
+    color: $white-color;
+
+    margin-bottom: $padding-small;
+
+    &:has(+ .subtitle) {
+        margin-bottom: 0;
+    }
+
+    & + .subtitle {
+        margin-top: 3px;
+    }
+}
+
+.subtitle {
+    font-size: 17px;
+    font-weight: 300;
+
+    color: $text-color;
+
+    &__highlight {
+        color: $white-color;
+        font-weight: 400;
+    }
+}
+
+.subtext {
+    color: $subtext-color;
+    font-weight: 500;
+}
+
+.twofa-status {
+    font-weight: 600;
+    text-transform: uppercase;
+
+    &.online {
+        color: $success-color;
+    }
+
+    &.offline {
+        color: $error-color;
+    }
+}
+
+.form__label:has(.text-status) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > * {
+        margin: 0;
+    }
+}
+
+.text-status {
+    font-weight: 400;
+    text-transform: none;
+    &.success {
+        color: $success-color;
+    }
+
+    &.error {
+        color: $error-color;
+    }
+}
+
+.link {
+    color: $secondary-color;
+    text-decoration: underline;
+    text-transform: lowercase;
+}
+
+.tt-up {
+    text-transform: uppercase;
+}
+
+.bright {
+    color: $white-color;
+}

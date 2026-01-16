@@ -1,0 +1,52 @@
+@use "../base/config" as *;
+
+.overlay {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    text-align: center;
+
+    background-color: $bg-color;
+    z-index: 50;
+
+    i {
+        font-size: 32px;
+        color: $icon-color;
+        margin-bottom: 10px;
+    }
+
+    &:has(.btn) {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .title {
+        margin-bottom: 10px;
+    }
+
+    &__content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__actions {
+        position: absolute;
+        left: 1.5rem;
+        right: 1.5rem;
+        bottom: 1.5rem;
+    }
+
+    &--highlight i {
+        color: $secondary-color;
+    }
+}

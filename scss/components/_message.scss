@@ -1,0 +1,173 @@
+@use "../base/config" as *;
+
+.message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+
+    padding: 1.5rem;
+
+    border-top: $border-settings;
+
+    .heading,
+    .subtitle {
+        margin: 0;
+    }
+
+    i {
+        font-size: 20px;
+        color: $text-color;
+        margin-bottom: 10px;
+    }
+
+    .subtitle {
+        margin-top: 4px;
+        font-size: 16px;
+    }
+
+    .btn {
+        margin-top: 1rem;
+    }
+
+    &--error,
+    &--success {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 10px;
+
+        padding: 1rem;
+
+        color: #fff;
+        text-align: left;
+
+        i {
+            margin: 0;
+            font-size: 18px;
+        }
+    }
+
+    &--error {
+        background-color: $error-color;
+        color: #fff;
+
+        i {
+            color: #fff;
+        }
+    }
+
+    &--success {
+        background-color: $success-color;
+        color: $bg-color;
+
+        i {
+            color: $bg-color;
+        }
+    }
+
+    &.no-border {
+        border-top: none;
+    }
+
+    &.pb-0 {
+        padding-bottom: 0;
+    }
+}
+
+.container > .message:first-child {
+    border-top: none;
+}
+
+.header + .system-message {
+    border: none;
+}
+
+.item-page .system-message {
+    margin-top: -55px;
+}
+
+.system-message {
+    position: relative;
+    z-index: 1;
+    transition: $default-transition;
+    width: 100%;
+
+    &.bt {
+        border-top: $border-settings;
+    }
+
+    .message {
+        padding-left: 20px;
+        padding-right: 20px;
+
+        height: 55px;
+        border: 0;
+    }
+
+    &.show {
+        margin-top: 0;
+    }
+}
+
+.system-message-container {
+    position: relative;
+    width: 100%;
+
+    padding-top: 1.5rem !important;
+
+    &.bt {
+        border-top: $border-settings;
+    }
+
+    .message {
+        position: relative;
+        width: 100%;
+        padding: 0 !important;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 0;
+
+        color: $text-color;
+        text-align: left;
+
+        border-radius: 6px;
+        border: $border-settings !important;
+
+        i {
+            margin: 0;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        &__content {
+            padding: 1.5rem 1rem;
+        }
+
+        &__heading {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        &__cta {
+            width: 100%;
+        }
+
+        .btn {
+            padding: 0 1rem;
+            margin: 0;
+            width: 100%;
+
+            height: 50px;
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
+
+            border: none;
+            border-top: $border-settings;
+        }
+    }
+}

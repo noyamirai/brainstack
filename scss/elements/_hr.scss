@@ -1,0 +1,11 @@
+@use "sass:color";
+@use "../base/config" as *;
+
+hr {
+    margin: 1.5rem 0;
+
+    height: 1px;
+
+    background-color: $line-color;
+    border: none;
+}

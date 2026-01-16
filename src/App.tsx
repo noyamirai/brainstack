@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { CurrentViewProvider } from "./contexts/current-view-context";
+import { useCurrentView } from "./hooks/use-current-view";
+import Home from "./views/Home";
 
-function App() {
-  const [count, setCount] = useState(0)
+const AppLayout: React.FC = () => {
+    const tabBarRoutes = ["/"];
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    const { currentPath, currentView } = useCurrentView();
+    const showTabBar = tabBarRoutes.includes(currentPath);
 
-export default App
+    useEffect(() => {
+        // Generate class based on the current path
+        const bodyClass =
+            currentView === "/" ? "home-page" : `${currentView}-page`;
+
+        // Add the class to the body
+        document.body.classList.add(bodyClass);
+
+        // Cleanup: remove previous class on path change
+        return () => {
+            document.body.classList.remove(bodyClass);
+        };
+    }, [currentPath]);
+
+    useEffect(() => {
+        if (!showTabBar) {
+            document.body.classList.remove("menu-is-open");
+        }
+    }, [showTabBar]);
+
+    return (
+        <div className="App">
+            {/* {showTabBar && <CompactTabBar />} */}
+
+            <Routes>
+                <Route path="/" element={<Home />} />
+            </Routes>
+        </div>
+    );
+};
+
+// Main component that sets up routing and navigation
+const App: React.FC = () => {
+    return (
+        <Router>
+            <CurrentViewProvider>
+                <AppLayout />
+            </CurrentViewProvider>
+        </Router>
+    );
+};
+
+export default App;
