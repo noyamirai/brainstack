@@ -36,7 +36,7 @@ aside {
     .mid-container {
         width: 100%;
         max-width: 100%;
-        padding: 1rem;
+        // padding: 1rem;
 
         scrollbar-width: none;
         overflow-y: scroll;
@@ -59,17 +59,59 @@ aside {
     .top-container {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-start;
 
         width: 100%;
-        height: calc(53px + (1rem * 2));
-        padding: 0 1rem;
+        height: calc(50px + (1.5rem * 2));
+        padding: 0 1.5rem;
+        gap: 14px;
 
         border-bottom: $border-settings;
 
+        &__title {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+
+            h4 {
+                font-size: 1rem;
+            }
+
+            p {
+                font-size: 15px;
+                font-weight: 300;
+            }
+
+            h4,
+            p {
+                line-height: 1;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                word-break: break-all;
+                -webkit-line-clamp: 1;
+                line-clamp: 1;
+            }
+
+            & > div {
+                position: relative;
+
+                display: flex;
+                align-items: center;
+                gap: 4px;
+
+                svg {
+                    width: 11px;
+                    height: 11px;
+                    transform: translateY(-8px);
+                }
+            }
+        }
+
         .icon-btn {
             position: absolute;
-            top: 1rem;
+            top: 1.5rem;
             right: 1rem;
 
             transform: translateY(calc(50% + 5px));
@@ -192,6 +234,10 @@ aside {
 }
 
 aside.collapsed {
+    .top-container__title {
+        display: none;
+    }
+
     .label {
         display: none;
     }

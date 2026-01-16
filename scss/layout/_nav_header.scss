@@ -1,0 +1,53 @@
+@use "../base/config" as *;
+@use "../utils/includes/breakpoints" as *;
+
+.nav-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    border-bottom: $border-settings;
+    height: $nav-header-height;
+
+    opacity: 1;
+    transition-duration: $menu-transition-duration;
+    transition-timing-function: $menu-transition-timing-function;
+
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: calc(1rem + 50px + 1rem);
+
+        height: 100%;
+        border-right: $border-settings;
+
+        &--menu {
+            margin-left: auto;
+
+            border-right: none;
+            border-left: $border-settings;
+
+            .btn {
+                width: 50px;
+                height: 50px;
+                min-width: auto;
+                padding: 0;
+            }
+
+            i {
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    @include from(l) {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}

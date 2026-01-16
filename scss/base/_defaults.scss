@@ -1,5 +1,5 @@
 @use "./config" as *;
-
+@use "../utils/includes/breakpoints" as *;
 *,
 ::after,
 ::before {
@@ -74,10 +74,38 @@ body {
 }
 
 .main {
-    &:has(.tabbar-container) {
-        padding-bottom: calc($tabbar-height + 80px);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    padding-bottom: 20px;
+
+    transition-property: margin;
+    transition-duration: $menu-transition-duration;
+    transition-timing-function: $menu-transition-timing-function;
+    margin: $nav-header-height 0 0 0;
+
+    @include from(l) {
+        margin-top: 0;
+        margin-left: $dashboard-menu-width;
     }
-    padding-bottom: calc(1.5rem + 65px + 1.5rem);
+
+    .container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        @include from(l) {
+            width: 100%;
+            max-width: 580px;
+            margin: 0 auto;
+        }
+
+        .content {
+            width: 100%;
+        }
+    }
 }
 
 .home-page,
@@ -87,26 +115,6 @@ body {
         flex: 1;
         display: flex;
         flex-direction: column;
-    }
-
-    .main {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        margin-bottom: calc(1.5rem + 65px + 1.5rem);
-
-        padding-bottom: 0;
-
-        .container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-    }
-
-    .main:has(.tabbar-container) {
-        margin-bottom: calc($tabbar-height + 80px);
     }
 }
 
@@ -122,28 +130,16 @@ body,
     }
 }
 
-body:not(:has(.tabbar-container)) .main {
-    // padding-bottom: 0px;
-    padding-bottom: 1.5rem;
-    // padding-bottom: 60px;
-}
+.highlight-block {
+    border-radius: 6px;
+    padding: 20px;
+    background-color: #1e2126;
 
-.item-page:has(.container--full) {
-    .main {
-        margin-bottom: 0;
+    p {
+        font-style: italic;
     }
 
-    .container--full {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .message {
-            width: 100%;
-        }
+    s {
+        color: #5b6170;
     }
-}
-
-.main:has(.btn--fixed) {
-    padding-bottom: calc(1.5rem + 65px + 1.5rem) !important;
 }
