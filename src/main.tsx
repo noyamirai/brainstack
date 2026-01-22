@@ -8,6 +8,7 @@ import Page from "./storyblok/Page";
 import PageStarterContent from "./storyblok/PageStarterContent";
 import RichTextContent from "./storyblok/RichTextContent";
 import HighlightTextBlock from "./storyblok/HighlightTextBlock";
+import TimelineItemBlok from "./storyblok/TimelineItemBlok";
 
 storyblokInit({
     accessToken: import.meta.env.VITE_STORYBLOK_DELIVERY_API_TOKEN,
@@ -20,6 +21,7 @@ storyblokInit({
         page_starter_content: PageStarterContent,
         rich_text_content: RichTextContent,
         highlight_text_block: HighlightTextBlock,
+        timeline_item: TimelineItemBlok,
     },
 });
 

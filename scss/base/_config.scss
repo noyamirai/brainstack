@@ -11,6 +11,7 @@ $secondary-color-rgb: rgb(255, 204, 0);
 $secondary-color-dark: color.adjust($secondary-color, $lightness: -5%);
 $secondary-color-light: color.adjust($secondary-color, $lightness: 5%);
 
+$hover-color: #1d2023;
 $cta-color: #ff4800;
 
 $logo-gradient: linear-gradient(

@@ -1,42 +1,35 @@
-// import { getStoryblokApi, StoryblokComponent } from "@storyblok/react";
+import { getStoryblokApi, StoryblokComponent } from "@storyblok/react";
 import PageHeader from "../components/PageHeader";
-// import { useEffect, useState } from "react";
-// import usePerceivedLoading from "../hooks/use-perceived-loading";
+import { useEffect, useState } from "react";
+import usePerceivedLoading from "../hooks/use-perceived-loading";
+import TimelineItemSkeleton from "../atoms/TimelineItemSkeleton";
 // import ContentSkeleton from "../atoms/ContentSkeleton";
 
 const Home: React.FC = () => {
-    // const [story, setStory] = useState<any>(null);
-    // const [isContentLoading, setIsContentLoading] = useState(true);
-    // const [isError, setIsError] = useState(false);
+    const [story, setStory] = useState<any>(null);
+    const [isContentLoading, setIsContentLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
 
-    // const isLoading = usePerceivedLoading(isContentLoading, isError, 600);
+    const isLoading = usePerceivedLoading(isContentLoading, isError, 600);
 
-    // useEffect(() => {
-    //     const api = getStoryblokApi();
+    useEffect(() => {
+        const api = getStoryblokApi();
 
-    //     api.get("cdn/stories/introduction", {
-    //         version: "draft",
-    //     })
-    //         .then((res) => {
-    //             setStory(res.data.story);
-    //         })
-    //         .catch(() => setIsError(true))
-    //         .finally(() => setIsContentLoading(false));
-    // }, []);
+        api.get("cdn/stories/timeline", {
+            version: "draft",
+        })
+            .then((res) => {
+                setStory(res.data.story);
+            })
+            .catch(() => setIsError(true))
+            .finally(() => setIsContentLoading(false));
+    }, []);
 
     return (
         <div className="main">
             <div className="container">
                 <div className="content">
                     <PageHeader labelLeft="Home : : Introduction" />
-                    {/* {isLoading && !isError && <ContentSkeleton />}
-
-                    {!isLoading && story && (
-                        <>
-                            <StoryblokComponent blok={story.content} />
-                        </>
-                    )} */}
-
                     <h1>Hi there! :)</h1>
 
                     <p>
@@ -66,12 +59,34 @@ const Home: React.FC = () => {
                     <hr />
 
                     <h2>Lore recap</h2>
-                    <p>I'm working on it...</p>
-                    {/* <p>
+                    <p>
                         Of course, we can't forget the CV-like timeline of what
                         I have been up to in life. Don't worry, details excluded
                         unless you're super interested.
-                    </p> */}
+                    </p>
+
+                    <ol className="timeline">
+                        {isLoading &&
+                            !isError &&
+                            Array.from({ length: 4 }).map((_, index) => (
+                                <TimelineItemSkeleton key={index} />
+                            ))}
+
+                        {!isLoading && story && (
+                            <>
+                                <StoryblokComponent blok={story.content} />
+                            </>
+                        )}
+
+                        {/* <TimelineItem
+                            year="Present"
+                            title="Title here"
+                            subtitle="Subtitle here"
+                            status="Status"
+                            period="NOW - NOW"
+                            description="Description"
+                        /> */}
+                    </ol>
                 </div>
             </div>
         </div>

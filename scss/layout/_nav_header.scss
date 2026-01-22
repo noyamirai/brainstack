@@ -17,6 +17,8 @@
     opacity: 1;
     transition-duration: $menu-transition-duration;
     transition-timing-function: $menu-transition-timing-function;
+    z-index: 100;
+    background-color: $bg-color;
 
     &__item {
         display: flex;

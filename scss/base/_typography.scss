@@ -119,9 +119,10 @@ ol {
     font-weight: 500;
 }
 
-.twofa-status {
+.status-text {
     font-weight: 600;
     text-transform: uppercase;
+    color: $text-color;
 
     &.online {
         color: $success-color;
@@ -129,6 +130,10 @@ ol {
 
     &.offline {
         color: $error-color;
+    }
+
+    &.warning {
+        color: $secondary-color;
     }
 }
 
