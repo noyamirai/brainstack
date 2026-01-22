@@ -1,12 +1,44 @@
+import { getStoryblokApi, StoryblokComponent } from "@storyblok/react";
 import PageHeader from "../components/PageHeader";
+import { useEffect, useState } from "react";
+import usePerceivedLoading from "../hooks/use-perceived-loading";
+import ContentSkeleton from "../atoms/ContentSkeleton";
 
 const Home: React.FC = () => {
+    // const [story, setStory] = useState<any>(null);
+    // const [isContentLoading, setIsContentLoading] = useState(true);
+    // const [isError, setIsError] = useState(false);
+
+    // const isLoading = usePerceivedLoading(isContentLoading, isError, 600);
+
+    // useEffect(() => {
+    //     const api = getStoryblokApi();
+
+    //     api.get("cdn/stories/introduction", {
+    //         version: "draft",
+    //     })
+    //         .then((res) => {
+    //             setStory(res.data.story);
+    //         })
+    //         .catch(() => setIsError(true))
+    //         .finally(() => setIsContentLoading(false));
+    // }, []);
+
     return (
         <div className="main">
             <div className="container">
                 <div className="content">
                     <PageHeader labelLeft="Home : : Introduction" />
+                    {/* {isLoading && !isError && <ContentSkeleton />}
+
+                    {!isLoading && story && (
+                        <>
+                            <StoryblokComponent blok={story.content} />
+                        </>
+                    )} */}
+
                     <h1>Hi there! :)</h1>
+
                     <p>
                         I guess you're here to read about who I am and what I
                         do. You've come to the perfect place, as I have created
@@ -14,6 +46,7 @@ const Home: React.FC = () => {
                         journal if you will... Explore this space, and delve a
                         little deeper into my BS...
                     </p>
+
                     <p>
                         But fine, I'll also give you one of those classic
                         portfolio one-liners as well. You know, the ones that

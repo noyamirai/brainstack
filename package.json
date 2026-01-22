@@ -14,11 +14,13 @@
     "allowSyntheticDefaultImports": true
   },
   "dependencies": {
+    "@storyblok/react": "^5.4.21",
+    "fs": "^0.0.1-security",
+    "html-entities": "^2.6.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^6.26.1",
-    "fs": "^0.0.1-security",
-    "html-entities": "^2.6.0"
+    "storyblok-rich-text-react-renderer": "^3.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

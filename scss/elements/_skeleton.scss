@@ -35,6 +35,26 @@
     }
 }
 
+.content-skeleton {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    div {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        height: 20px;
+
+        &:nth-child(1) {
+            grid-template-columns: 20% 10% 65%;
+        }
+        &:nth-child(2) {
+            grid-template-columns: 15% 70% 10%;
+        }
+    }
+}
+
 @keyframes shimmer {
     100% {
         transform: translateX(100%);
