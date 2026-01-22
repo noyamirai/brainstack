@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Logo from "../atoms/Logo";
+import Menu from "./Menu";
 
 type Props = {
     isCollapsed: boolean;
@@ -112,16 +113,9 @@ const Aside: React.FC<Props> = ({ isCollapsed }) => {
             </div>
 
             <div className="mid-container">
-                <div className="menu-wrapper">
-                    <ul className="menu">
-                        <li className="active">
-                            <a href="/">
-                                <i className="fa-solid fa-home"></i>
-                                <span>Home</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                <nav className="menu-wrapper">
+                    <Menu />
+                </nav>
             </div>
         </aside>
     );

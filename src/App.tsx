@@ -3,12 +3,15 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { CurrentViewProvider } from "./contexts/current-view-context";
 import { useCurrentView } from "./hooks/use-current-view";
 import Home from "./views/Home";
+import NavHeader from "./components/NavHeader";
+import Aside from "./components/Aside";
+import Menu from "./components/Menu";
 
 const AppLayout: React.FC = () => {
-    const tabBarRoutes = ["/"];
+    // const tabBarRoutes = ["/"];
 
     const { currentPath, currentView } = useCurrentView();
-    const showTabBar = tabBarRoutes.includes(currentPath);
+    // const showTabBar = tabBarRoutes.includes(currentPath);
 
     useEffect(() => {
         // Generate class based on the current path
@@ -24,15 +27,20 @@ const AppLayout: React.FC = () => {
         };
     }, [currentPath]);
 
-    useEffect(() => {
-        if (!showTabBar) {
-            document.body.classList.remove("menu-is-open");
-        }
-    }, [showTabBar]);
+    // useEffect(() => {
+    //     if (!showTabBar) {
+    //         document.body.classList.remove("menu-is-open");
+    //     }
+    // }, [showTabBar]);
 
     return (
         <div className="App">
-            {/* {showTabBar && <CompactTabBar />} */}
+            <NavHeader />
+            <Aside isCollapsed={false} />
+
+            <section className="menu-wrapper">
+                <Menu />
+            </section>
 
             <Routes>
                 <Route path="/" element={<Home />} />

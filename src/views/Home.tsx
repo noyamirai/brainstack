@@ -1,13 +1,8 @@
-import Aside from "../components/Aside";
-import NavHeader from "../components/NavHeader";
 import PageHeader from "../components/PageHeader";
 
 const Home: React.FC = () => {
     return (
         <div className="main">
-            <NavHeader />
-            <Aside isCollapsed={false} />
-
             <div className="container">
                 <div className="content">
                     <PageHeader labelLeft="Home : : Introduction" />

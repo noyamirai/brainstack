@@ -20,63 +20,16 @@
     right: 0;
 
     height: $tabbar-height;
-    max-width: 480px;
+    // max-width: 480px;
     margin: 0 auto;
 
-    background-color: $bg-color;
+    background-color: $tabbar-color;
 
     border-top-left-radius: $mobile-corner-radius;
     border-top-right-radius: $mobile-corner-radius;
 
     transition: all 380ms ease-in-out;
     z-index: 2500;
-
-    // bottom part of tabbar
-    &::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: calc($tabbar-height - 50px);
-
-        background-color: $tabbar-color;
-    }
-
-    &__shape {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        height: 50px;
-        width: 140px;
-
-        transform: translateX(-50%);
-
-        background-image: url("/assets/tabbar-shape.svg");
-
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center top;
-    }
-
-    &__side {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-
-        width: calc((100% - 140px) / 2);
-
-        background-color: $tabbar-color;
-
-        &.left {
-            left: 0;
-            border-top-left-radius: inherit;
-        }
-        &.right {
-            right: 0;
-            border-top-right-radius: inherit;
-        }
-    }
 
     .tabs {
         position: relative;
@@ -131,36 +84,6 @@
 
             font-size: 12px;
             font-weight: 700;
-        }
-
-        &__item--main {
-            transform: translateY(calc(-50% - 20px));
-
-            a {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border: none !important;
-
-                margin: 0;
-                padding: 0;
-
-                width: 76px;
-                height: 76px;
-                border-radius: 50%;
-
-                background-color: $secondary-color !important;
-                transition: $default-transition;
-
-                &:hover {
-                    transform: scale(1.04);
-                }
-
-                i {
-                    color: $bg-color;
-                    font-size: 24px;
-                }
-            }
         }
     }
 }

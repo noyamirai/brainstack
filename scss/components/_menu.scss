@@ -1,6 +1,126 @@
 @use "../base/config" as *;
 @use "../utils/includes/breakpoints" as *;
 
+.menu-is-open {
+    .menu-wrapper {
+        transform: translateY(0);
+    }
+}
+
+.menu-wrapper {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding-bottom: 20px;
+
+    transform: translateY(100%);
+    transition: all 350ms ease-in-out;
+    background-color: $tabbar-color;
+
+    z-index: 1000;
+
+    @include from(l) {
+        opacity: 0;
+        display: none;
+        pointer-events: none;
+        background-color: transparent;
+    }
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu__item {
+    a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 1rem;
+
+        font-weight: 300;
+        color: $text-color;
+        text-decoration: none;
+        background-color: $tabbar-color;
+
+        i {
+            color: inherit;
+        }
+
+        &:hover {
+            background-color: #1d2023;
+            color: $secondary-color;
+        }
+    }
+
+    &.active a {
+        position: relative;
+        color: $secondary-color;
+
+        &::before {
+            content: "You are here";
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+
+            font-weight: 700;
+            transform: translateY(-50%);
+            font-size: 14px;
+            text-transform: uppercase;
+
+            color: $bg-color;
+            background-color: $success-color;
+            padding: 5px 10px;
+            line-height: 1;
+            border-radius: 20px;
+        }
+    }
+}
+
+.menu__item + .menu__item {
+    border-top: $border-settings;
+}
+
+// DESKTOP MENU
+aside .menu-wrapper {
+    transform: none;
+    position: relative;
+    inset: 0;
+    padding: 0;
+
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    pointer-events: auto;
+
+    .menu__item {
+        a {
+            padding: 18px 24px;
+            background-color: $bg-color;
+
+            &:hover {
+                background-color: #1e2126;
+            }
+        }
+
+        &.active a {
+            color: $bg-color;
+            background-color: $secondary-color;
+
+            &::before {
+                display: none;
+            }
+        }
+    }
+
+    .menu__item.active + .menu__item {
+        border-top: none;
+    }
+}
+
 // .menu {
 //     display: flex;
 //     flex-direction: column;
