@@ -4,8 +4,8 @@ import App from "./App";
 // import React from "react";
 
 import { storyblokInit, apiPlugin } from "@storyblok/react";
-import Page from "./storyblok/page";
-import PageStarterContent from "./storyblok/pageStarterContent";
+import Page from "./storyblok/Page";
+import PageStarterContent from "./storyblok/PageStarterContent";
 import RichTextContent from "./storyblok/RichTextContent";
 import HighlightTextBlock from "./storyblok/HighlightTextBlock";
 

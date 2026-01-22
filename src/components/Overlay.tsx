@@ -1,4 +1,4 @@
-import { FontAwesomeIcon } from "../models/api";
+// import { FontAwesomeIcon } from "../models/api";
 
 export type OverlayProps = {
     title?: string;
@@ -13,7 +13,7 @@ export type OverlayProps = {
     buttonClass?: string;
 
     hasIcon?: boolean;
-    iconClass?: FontAwesomeIcon;
+    iconClass?: `fa-${string} fa-${string}`;
 
     extraContent?: React.ReactNode;
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Logo from "../atoms/Logo";
 import Menu from "./Menu";
 
@@ -7,36 +7,37 @@ type Props = {
 };
 
 const Aside: React.FC<Props> = ({ isCollapsed }) => {
-    const ASIDE_STORAGE_KEY = "noyamirai_aside_collapsed";
+    const collapsed = isCollapsed;
+    // const ASIDE_STORAGE_KEY = "noyamirai_aside_collapsed";
 
-    const [collapsed, setCollapsed] = useState<boolean>(() => {
-        const stored = localStorage.getItem(ASIDE_STORAGE_KEY);
-        return stored ? stored === "true" : isCollapsed;
-    });
+    // const [collapsed, setCollapsed] = useState<boolean>(() => {
+    //     const stored = localStorage.getItem(ASIDE_STORAGE_KEY);
+    //     return stored ? stored === "true" : isCollapsed;
+    // });
 
     const [hovered, setHovered] = useState(false);
 
-    useEffect(() => {
-        let width: string;
+    // useEffect(() => {
+    //     let width: string;
 
-        if (!collapsed) {
-            width = "320px";
-        } else if (hovered) {
-            width = "calc(1.5rem + 50px + 1.5rem + 10px + 1rem + 20px + 1rem)";
-        } else {
-            width = "calc(1.5rem + 50px + 1.5rem + 0px)";
-        }
+    //     if (!collapsed) {
+    //         width = "320px";
+    //     } else if (hovered) {
+    //         width = "calc(1.5rem + 50px + 1.5rem + 10px + 1rem + 20px + 1rem)";
+    //     } else {
+    //         width = "calc(1.5rem + 50px + 1.5rem + 0px)";
+    //     }
 
-        document.documentElement.style.setProperty("--aside-width", width);
-    }, [collapsed, hovered]);
+    //     document.documentElement.style.setProperty("--aside-width", width);
+    // }, [collapsed, hovered]);
 
-    useEffect(() => {
-        localStorage.setItem("aside-collapsed", String(collapsed));
-    }, [collapsed]);
+    // useEffect(() => {
+    //     localStorage.setItem("aside-collapsed", String(collapsed));
+    // }, [collapsed]);
 
-    const handleToggleCollapse = () => {
-        setCollapsed((prev) => !prev);
-    };
+    // const handleToggleCollapse = () => {
+    //     setCollapsed((prev) => !prev);
+    // };
 
     return (
         <aside
