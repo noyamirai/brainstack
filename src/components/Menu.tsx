@@ -14,18 +14,21 @@ const Menu: React.FC = () => {
                 href="/stack"
                 iconClassName="fa-solid fa-cubes"
                 label="Stack"
+                isDisabled={true}
             />
             <MenuItem
                 isActive={false}
                 href="/workspace"
                 iconClassName="fa-solid fa-cubes"
                 label="Workspace"
+                isDisabled={true}
             />
             <MenuItem
                 isActive={false}
                 href="/projects"
                 iconClassName="fa-solid fa-folder"
                 label="Projects"
+                isDisabled={true}
             />
         </ul>
     );

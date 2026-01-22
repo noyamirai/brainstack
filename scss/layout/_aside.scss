@@ -262,6 +262,24 @@ aside.collapsed {
                 display: none;
             }
         }
+        li.menu__item--disabled {
+            // width: 53px !important;
+            height: 53px !important;
+            min-height: 53px !important;
+
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 0 !important;
+
+            &::before {
+                display: none;
+            }
+
+            span {
+                display: none;
+            }
+        }
     }
 
     .label:first-child + .menu-wrapper {

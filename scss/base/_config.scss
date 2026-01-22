@@ -22,7 +22,7 @@ $logo-gradient: linear-gradient(
     #fc0 100%
 );
 
-$light-color: #fcfcfc;
+$light-color: #1e2126;
 $bg-color: #0d1313;
 $white-color: #f1f5ff;
 
@@ -88,8 +88,7 @@ $breakpoints: (
     // desktop
     "xl": 1200px,
     // widescreen
-    "xxl": 1680px,
-    // fullhd
+    "xxl": 1680px, // fullhd
 );
 /* =============================================================================
   #SPECIAL TRANSITION CONFIGS
