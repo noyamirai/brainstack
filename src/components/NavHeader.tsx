@@ -8,9 +8,6 @@ const NavHeader: React.FC = () => {
 
     const { currentView } = useCurrentView();
 
-    // const mainViews = ["/", "home"];
-    // const isMoreActive = !mainViews.includes(currentView);
-
     const toggleMenu = () => {
         setMenuIsOpen((prev) => !prev);
     };
@@ -50,13 +47,27 @@ const NavHeader: React.FC = () => {
     }, [menuIsOpen]);
 
     useEffect(() => {
+        const handleResize = () => {
+            if (menuIsOpen) {
+                closeMenu();
+            }
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, [menuIsOpen]);
+
+    useEffect(() => {
         if (menuIsOpen) {
             setMenuIsOpen(false);
         }
     }, [currentView]);
 
     return (
-        <header className="nav-header">
+        <header className="nav-header" ref={menuRef}>
             <div className="nav-header__item">
                 <a href="/" className="logo-mark">
                     <Logo />

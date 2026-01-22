@@ -64,7 +64,7 @@
 
             font-weight: 700;
             transform: translateY(-50%);
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
 
             color: $text-color;
@@ -74,7 +74,6 @@
             border-radius: 20px;
 
             @include from(l) {
-                font-size: 13px;
                 color: $text-color;
                 background-color: $light-color;
             }
@@ -98,7 +97,7 @@
 
             font-weight: 700;
             transform: translateY(-50%);
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
 
             color: $bg-color;

@@ -8,10 +8,7 @@ import Aside from "./components/Aside";
 import Menu from "./components/Menu";
 
 const AppLayout: React.FC = () => {
-    // const tabBarRoutes = ["/"];
-
     const { currentPath, currentView } = useCurrentView();
-    // const showTabBar = tabBarRoutes.includes(currentPath);
 
     useEffect(() => {
         // Generate class based on the current path
@@ -26,12 +23,6 @@ const AppLayout: React.FC = () => {
             document.body.classList.remove(bodyClass);
         };
     }, [currentPath]);
-
-    // useEffect(() => {
-    //     if (!showTabBar) {
-    //         document.body.classList.remove("menu-is-open");
-    //     }
-    // }, [showTabBar]);
 
     return (
         <div className="App">

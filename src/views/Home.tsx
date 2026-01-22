@@ -66,11 +66,12 @@ const Home: React.FC = () => {
                     <hr />
 
                     <h2>Lore recap</h2>
-                    <p>
+                    <p>I'm working on it...</p>
+                    {/* <p>
                         Of course, we can't forget the CV-like timeline of what
                         I have been up to in life. Don't worry, details excluded
                         unless you're super interested.
-                    </p>
+                    </p> */}
                 </div>
             </div>
         </div>

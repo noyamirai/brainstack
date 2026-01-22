@@ -72,7 +72,7 @@ const Aside: React.FC<Props> = ({ isCollapsed }) => {
                     <p className="">* Brain Stack or Bullshit</p>
                 </div>
 
-                <button
+                {/* <button
                     className="icon-btn"
                     type="button"
                     aria-label="Collapse aside navigation"
@@ -109,7 +109,7 @@ const Aside: React.FC<Props> = ({ isCollapsed }) => {
                     <div className="expand-btn">
                         <i className="fa-solid fa-chevron-right"></i>
                     </div>
-                </button>
+                </button> */}
             </div>
 
             <div className="mid-container">
