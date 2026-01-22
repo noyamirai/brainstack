@@ -13,6 +13,15 @@
 
     padding: 12px;
 
+    &:focus-visible {
+        outline: none;
+        background-color: $success-color;
+
+        svg path {
+            fill: $bg-color;
+        }
+    }
+
     img,
     svg {
         width: 100%;

@@ -104,11 +104,20 @@ aside .menu-wrapper {
             &:hover {
                 background-color: #1e2126;
             }
+            &:focus-visible {
+                outline: none;
+                color: $success-color;
+            }
         }
 
         &.active a {
             color: $bg-color;
             background-color: $secondary-color;
+
+            &:focus-visible {
+                outline: none;
+                background-color: $success-color;
+            }
 
             &::before {
                 display: none;
