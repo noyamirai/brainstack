@@ -89,6 +89,7 @@ body {
     @include from(l) {
         margin-top: 0;
         padding-top: 0;
+        padding-bottom: 40px;
         margin-left: $dashboard-menu-width;
     }
 

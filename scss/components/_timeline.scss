@@ -8,7 +8,11 @@
     gap: 20px;
 
     list-style: none;
-    margin-top: 40px;
+    margin-top: 30px;
+
+    & + hr {
+        margin-top: 30px;
+    }
 
     &:not(:has(.timeline__item:nth-child(2))) {
         .timeline__item::before,

@@ -41,9 +41,9 @@ const Home: React.FC = () => {
                     </p>
 
                     <p>
-                        But fine, I'll also give you one of those classic
-                        portfolio one-liners as well. You know, the ones that
-                        kind of describe you but never quite enough.
+                        But fine, I'll give you one of those classic portfolio
+                        one-liners as well. You know, the ones that kind of
+                        describe you but never quite enough.
                     </p>
 
                     <hr />
@@ -77,16 +77,18 @@ const Home: React.FC = () => {
                                 <StoryblokComponent blok={story.content} />
                             </>
                         )}
-
-                        {/* <TimelineItem
-                            year="Present"
-                            title="Title here"
-                            subtitle="Subtitle here"
-                            status="Status"
-                            period="NOW - NOW"
-                            description="Description"
-                        /> */}
                     </ol>
+
+                    {!isLoading && story && (
+                        <>
+                            <hr />
+
+                            <p className="ta-center">
+                                Thanks for reading this far! I don't have much
+                                else to offer now..
+                            </p>
+                        </>
+                    )}
                 </div>
             </div>
         </div>
