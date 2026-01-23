@@ -112,9 +112,7 @@ const TimelineItem: React.FC<Props> = ({
                             height: isOpen ? height : 0,
                         }}
                     >
-                        <div ref={descriptionRef}>
-                            <p>{description}</p>
-                        </div>
+                        <div ref={descriptionRef}>{description}</div>
                     </div>
                 </div>
                 <button
