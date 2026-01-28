@@ -392,6 +392,75 @@ const Stack: React.FC = () => {
                             </ul>
                         </div>
                     </section>
+                    <section className="bento-grid reversed">
+                        <div className="card">
+                            <h3 className="card__label">Tools</h3>
+                            <ul className="stack-grid">
+                                <StackItem
+                                    label="figma"
+                                    icon={
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 100 100"
+                                        >
+                                            <g clip-path="url(#a)">
+                                                <path
+                                                    fill="#0acf83"
+                                                    d="M33.333 100C42.533 100 50 92.533 50 83.333V66.667H33.333c-9.2 0-16.666 7.466-16.666 16.666S24.133 100 33.333 100"
+                                                />
+                                                <path
+                                                    fill="#a259ff"
+                                                    d="M16.667 50c0-9.2 7.466-16.667 16.666-16.667H50v33.334H33.333c-9.2 0-16.666-7.467-16.666-16.667"
+                                                />
+                                                <path
+                                                    fill="#f24e1e"
+                                                    d="M16.667 16.667C16.667 7.467 24.133 0 33.333 0H50v33.333H33.333c-9.2 0-16.666-7.466-16.666-16.666"
+                                                />
+                                                <path
+                                                    fill="#ff7262"
+                                                    d="M50 0h16.667c9.2 0 16.666 7.467 16.666 16.667s-7.466 16.666-16.666 16.666H50z"
+                                                />
+                                                <path
+                                                    fill="#1abcfe"
+                                                    d="M83.333 50c0 9.2-7.466 16.667-16.666 16.667S50 59.2 50 50s7.467-16.667 16.667-16.667S83.333 40.8 83.333 50"
+                                                />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="a">
+                                                    <path
+                                                        fill="#fff"
+                                                        d="M0 0h100v100H0z"
+                                                    />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                    }
+                                />
+                                <StackItem
+                                    label="adobe"
+                                    icon={
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 100 100"
+                                        >
+                                            <path
+                                                fill="#cc2229"
+                                                fill-rule="evenodd"
+                                                d="M0 5h37.123L0 95.411zm62.413 0H100v89.25zm-12.22 34.57L70.69 93.788H58.005l-8.74-17.169h-13.92z"
+                                                clip-rule="evenodd"
+                                            />
+                                        </svg>
+                                    }
+                                />
+                            </ul>
+                        </div>
+                        <div className="card">
+                            <h3 className="card__label">Certified...</h3>
+                            <ul className="stack-grid"></ul>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>

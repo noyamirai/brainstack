@@ -74,6 +74,28 @@
     grid-template-columns: 1fr;
     gap: 10px;
 
+    & + & {
+        margin-top: 10px;
+    }
+
+    &.reversed {
+        @media only screen and (min-width: 830px) {
+            grid-template-columns: 1fr 65%;
+
+            .card:nth-of-type(1) .stack-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+        }
+
+        @include from(l) {
+            grid-template-columns: 1fr;
+        }
+
+        @include from(xl) {
+            grid-template-columns: 1fr 65%;
+        }
+    }
+
     @media only screen and (min-width: 830px) {
         grid-template-columns: 65% 1fr;
 
