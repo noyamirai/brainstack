@@ -6,6 +6,9 @@ const Workspace: React.FC = () => {
 
     const togglePanel = () => {
         setIsPanelOpen((prev) => !prev);
+
+        // toggle on body as well
+        document.body.classList.toggle("push-modal--open", !isPanelOpen);
     };
 
     return (
@@ -76,13 +79,13 @@ const Workspace: React.FC = () => {
             <section className="page-modal">
                 <div className="page-modal__content">
                     <div className="container">
-                        <button
+                        {/* <button
                             type="button"
                             className="page-modal__btn"
                             onClick={togglePanel}
                         >
                             <i className="fa-solid fa-xmark"></i>
-                        </button>
+                        </button> */}
                         <h2>Details</h2>
                         <p>Coming soon...</p>
                     </div>

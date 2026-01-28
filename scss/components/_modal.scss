@@ -1,4 +1,5 @@
 @use "../base/config" as *;
+@use "../utils/includes/breakpoints" as *;
 
 .push-modal {
     position: fixed;
@@ -77,15 +78,44 @@
     }
 }
 
+/* 
+        if ( aside !collapsed) {
+            width = "320px";
+        } else if (aside hovered) {
+            width = "calc(1.5rem + 50px + 1.5rem + 10px + 1rem + 20px + 1rem)";
+        } else {
+            width = "calc(1.5rem + 50px + 1.5rem + 0px)";
+        }
+*/
+
 .main--panel {
+    // flex: 1;
+    // padding-bottom: 0;
+
+    @include from(l) {
+        display: flex;
+        flex-direction: row;
+
+        & > * {
+            flex: 1;
+        }
+    }
+
     & > .container {
         transition-duration: $menu-transition-duration;
         transition-timing-function: $menu-transition-timing-function;
     }
 
     &.open {
+        margin-left: 0;
+
         & > .container {
             transform: translateX(-75%);
+
+            @include from(l) {
+                transform: translateX(0);
+                margin-left: 0;
+            }
         }
 
         .page-modal {
@@ -96,6 +126,14 @@
                 opacity: 1;
                 pointer-events: auto;
             }
+        }
+    }
+}
+
+.push-modal--open {
+    aside {
+        @include from(l) {
+            transform: translateX(-100%);
         }
     }
 }
@@ -115,6 +153,16 @@
     transform: translateX(100%);
     transition-duration: $menu-transition-duration;
     transition-timing-function: $menu-transition-timing-function;
+
+    @include from(l) {
+        top: 0;
+        width: calc(50% - 3rem);
+        // width: 50%;
+
+        &::before {
+            display: none;
+        }
+    }
 
     &::before {
         content: "";
@@ -141,6 +189,10 @@
 
         border-left: $border-settings;
         background-color: $bg-color;
+
+        @include from(l) {
+            width: 100%;
+        }
     }
 
     &__btn {
