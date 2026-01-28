@@ -6,6 +6,7 @@ import Home from "./views/Home";
 import NavHeader from "./components/NavHeader";
 import Aside from "./components/Aside";
 import Menu from "./components/Menu";
+import Stack from "./views/Stack";
 
 const AppLayout: React.FC = () => {
     const { currentPath, currentView } = useCurrentView();
@@ -35,6 +36,7 @@ const AppLayout: React.FC = () => {
 
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/stack" element={<Stack />} />
             </Routes>
         </div>
     );
