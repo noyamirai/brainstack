@@ -10,7 +10,13 @@ const Stack: React.FC = () => {
                     <h1>Current stack</h1>
                     <p>
                         Throughout my 27 years on earth, I have aquired a range
-                        o skills and earned myself several certifications.
+                        of skills and earned myself several certifications.
+                    </p>
+
+                    <p>
+                        Though they may not all be directly related to web
+                        development, they have all contributed to my growth as a
+                        professional and individual :)
                     </p>
 
                     <section className="bento-grid">
@@ -459,10 +465,48 @@ const Stack: React.FC = () => {
                         <div className="card">
                             <h3 className="card__label">Certified...</h3>
                             <ul className="stack-grid">
-                                <StackItem label="overwatch" icon={<></>} />
-                                <StackItem label="cyberpunk" icon={<></>} />
-                                <StackItem label="avatar" icon={<></>} />
-                                <StackItem label="TWICE" icon={<></>} />
+                                <StackItem
+                                    label="overwatch"
+                                    icon={
+                                        <img
+                                            src="assets/stack/overwatch_logo.png"
+                                            alt="Overwatch Logo"
+                                        />
+                                    }
+                                    tagLabel="ana main"
+                                />
+                                <StackItem
+                                    className="wide"
+                                    label="cyberpunk"
+                                    icon={
+                                        <img
+                                            src="assets/stack/cyberpunk_logo.png"
+                                            alt="Cyberpunk Logo"
+                                        />
+                                    }
+                                    tagLabel="enjoyer"
+                                />
+                                <StackItem
+                                    className="wide"
+                                    label="avatar"
+                                    icon={
+                                        <img
+                                            src="assets/stack/avatar_logo.png"
+                                            alt="Avatar Logo"
+                                        />
+                                    }
+                                    tagLabel="expert"
+                                />
+                                <StackItem
+                                    label="TWICE"
+                                    icon={
+                                        <img
+                                            src="assets/stack/twice_logo.png"
+                                            alt="TWICE Logo"
+                                        />
+                                    }
+                                    tagLabel="OG once"
+                                />
                             </ul>
                         </div>
                     </section>
