@@ -1,17 +1,20 @@
+import { Link } from "react-router-dom";
+import { useCurrentView } from "../hooks/use-current-view";
+
 type Props = {
-    isActive?: boolean;
     href?: string;
     iconClassName: `fa-${string} fa-${string}`;
     label: string;
     isDisabled?: boolean;
+    className?: string;
 };
 
 const MenuItem: React.FC<Props> = ({
-    isActive,
     href = "#",
     iconClassName,
     label,
     isDisabled,
+    className,
 }) => {
     if (isDisabled) {
         return (
@@ -22,12 +25,19 @@ const MenuItem: React.FC<Props> = ({
         );
     }
 
+    const { currentPath } = useCurrentView();
+    const isActive = currentPath === href;
+
+    const classNames = ["menu__item", isActive ? "active" : "", className]
+        .filter(Boolean)
+        .join(" ");
+
     return (
-        <li className={`menu__item ${isActive ? "active" : ""}`}>
-            <a href={href}>
+        <li className={classNames}>
+            <Link to={href}>
                 <i className={iconClassName}></i>
                 <span>{label}</span>
-            </a>
+            </Link>
         </li>
     );
 };

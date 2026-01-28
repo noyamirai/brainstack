@@ -4,6 +4,7 @@
 .menu-is-open {
     .menu-wrapper {
         transform: translateY(0);
+        opacity: 1;
     }
 }
 
@@ -15,6 +16,7 @@
 
     padding-bottom: 20px;
 
+    opacity: 0;
     transform: translateY(100%);
     transition: all 350ms ease-in-out;
     background-color: $tabbar-color;
@@ -32,6 +34,12 @@
 .menu {
     display: flex;
     flex-direction: column;
+
+    &:has(.menu__item.new) {
+        .menu__item.active a::before {
+            background-color: $secondary-color;
+        }
+    }
 }
 
 .menu__item {
@@ -107,6 +115,28 @@
             border-radius: 20px;
         }
     }
+
+    &.new:not(.active) a {
+        position: relative;
+
+        &::before {
+            content: "NEW";
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+
+            font-weight: 700;
+            transform: translateY(-50%);
+            font-size: 13px;
+            text-transform: uppercase;
+
+            color: $bg-color;
+            background-color: $success-color;
+            padding: 5px 10px;
+            line-height: 1;
+            border-radius: 20px;
+        }
+    }
 }
 
 .menu__item + .menu__item {
@@ -150,9 +180,20 @@ aside .menu-wrapper {
                 outline: none;
                 background-color: $success-color;
             }
+        }
 
+        &.active.new a {
             &::before {
-                display: none;
+                background-color: $bg-color !important;
+                color: $secondary-color !important;
+
+                content: "NEW";
+            }
+        }
+
+        &.active:not(.new) a {
+            &::before {
+                display: none !important;
             }
         }
     }
