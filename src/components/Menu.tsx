@@ -12,7 +12,7 @@ const Menu: React.FC = () => {
             />
             <MenuItem
                 href="/workspace"
-                iconClassName="fa-solid fa-cubes"
+                iconClassName="fa-solid fa-desktop"
                 label="Workspace"
                 className="new"
             />
