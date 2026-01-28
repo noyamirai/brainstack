@@ -101,15 +101,25 @@ body {
 
         @include from(l) {
             width: 100%;
-            max-width: 580px;
+            max-width: 800px;
             margin: 0 auto;
         }
+
+        // @include from(xxl) {
+        //     max-width: 580px;
+        // }
 
         .content {
             width: 100%;
         }
     }
 }
+
+// .stack-page .main .container {
+//     @include from(l) {
+//         max-width: 800px;
+//     }
+// }
 
 .home-page,
 .item-page:has(.container--full) {

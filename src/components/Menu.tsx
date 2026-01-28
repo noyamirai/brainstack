@@ -14,7 +14,6 @@ const Menu: React.FC = () => {
                 href="/stack"
                 iconClassName="fa-solid fa-cubes"
                 label="Stack"
-                isDisabled={true}
             />
             <MenuItem
                 isActive={false}
