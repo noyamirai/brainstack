@@ -17,6 +17,10 @@
         font-weight: 600;
         color: $success-color;
         margin-bottom: 1rem;
+
+        @include from(l) {
+            margin-bottom: 18px;
+        }
     }
 
     &__subtext {
@@ -55,8 +59,12 @@
         height: 30px;
 
         @include from(l) {
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
+        }
+
+        @include from(xl) {
+            height: 48px;
         }
 
         img,
@@ -94,6 +102,16 @@
             text-transform: uppercase;
             color: $bg-color;
             background-color: $secondary-color;
+
+            &.pink {
+                background-color: #f600ff;
+            }
+            &.blue {
+                background-color: #1abcfe;
+            }
+            &.red {
+                background-color: #ff4800;
+            }
         }
     }
 }

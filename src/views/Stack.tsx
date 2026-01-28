@@ -474,6 +474,7 @@ const Stack: React.FC = () => {
                                         />
                                     }
                                     tagLabel="ana main"
+                                    tagColor="red"
                                 />
                                 <StackItem
                                     className="wide"
@@ -496,6 +497,7 @@ const Stack: React.FC = () => {
                                         />
                                     }
                                     tagLabel="expert"
+                                    tagColor="blue"
                                 />
                                 <StackItem
                                     label="TWICE"
@@ -506,6 +508,7 @@ const Stack: React.FC = () => {
                                         />
                                     }
                                     tagLabel="OG once"
+                                    tagColor="pink"
                                 />
                             </ul>
                         </div>
