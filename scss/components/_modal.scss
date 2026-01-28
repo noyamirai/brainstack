@@ -1,6 +1,6 @@
 @use "../base/config" as *;
 
-.modal {
+.push-modal {
     position: fixed;
     left: 0;
     right: 0;
@@ -74,5 +74,99 @@
 
     &--fixed {
         transform: none;
+    }
+}
+
+.main--panel {
+    & > .container {
+        transition-duration: $menu-transition-duration;
+        transition-timing-function: $menu-transition-timing-function;
+    }
+
+    &.open {
+        & > .container {
+            transform: translateX(-75%);
+        }
+
+        .page-modal {
+            transform: translateX(0);
+            opacity: 1;
+
+            &::before {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+    }
+}
+
+.page-modal {
+    position: fixed;
+    top: $nav-header-height;
+    bottom: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    opacity: 0;
+    z-index: 2000;
+    transform: translateX(100%);
+    transition-duration: $menu-transition-duration;
+    transition-timing-function: $menu-transition-timing-function;
+
+    &::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        // background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1999;
+        opacity: 0;
+        transition-duration: $menu-transition-duration;
+        transition-timing-function: $menu-transition-timing-function;
+        pointer-events: none;
+    }
+
+    &__content {
+        position: relative;
+        flex: 1;
+        z-index: 2000;
+
+        width: 75%;
+        padding: 80px 0 20px 0;
+
+        border-left: $border-settings;
+        background-color: $bg-color;
+    }
+
+    &__btn {
+        $btnWidth: 46px;
+
+        position: absolute;
+        top: 50%;
+        left: 0;
+
+        transform: translate(calc($btnWidth / 2 * -1), -50%);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: $btnWidth;
+        height: $btnWidth;
+        min-width: $btnWidth;
+        padding: 0;
+
+        border-radius: 50%;
+        background-color: $secondary-color;
+
+        i {
+            color: $bg-color;
+            font-size: 18px;
+        }
     }
 }

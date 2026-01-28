@@ -14,7 +14,7 @@ const Menu: React.FC = () => {
                 href="/workspace"
                 iconClassName="fa-solid fa-cubes"
                 label="Workspace"
-                isDisabled={true}
+                className="new"
             />
             <MenuItem
                 href="/projects"
