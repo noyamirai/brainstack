@@ -13,10 +13,10 @@
 
     &__label {
         text-transform: uppercase;
-        font-size: 14px;
+        font-size: 15px;
         font-weight: 600;
         color: $success-color;
-        margin-bottom: 12px;
+        margin-bottom: 1rem;
     }
 
     &__subtext {
@@ -35,6 +35,8 @@
         border-radius: 6px;
         border: none;
 
+        padding-left: 10px;
+        padding-right: 10px;
         gap: 0;
 
         text-align: center;
@@ -65,6 +67,35 @@
             object-position: center;
         }
     }
+
+    &.wide .card__icon {
+        width: 100%;
+    }
+
+    &:has(.tag) {
+        position: relative;
+
+        .tag {
+            position: absolute;
+            top: 0;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+            width: auto;
+            min-width: max-content;
+
+            font-size: 10px;
+            line-height: 1;
+            padding-left: 8px;
+            padding-right: 8px;
+            border: none;
+
+            font-weight: 700;
+            text-transform: uppercase;
+            color: $bg-color;
+            background-color: $secondary-color;
+        }
+    }
 }
 
 .bento-grid {
@@ -76,6 +107,31 @@
 
     & + & {
         margin-top: 10px;
+    }
+
+    &:not(.reversed) {
+        .card:nth-of-type(1) .stack-grid {
+            grid-template-columns: repeat(3, 1fr);
+            @media only screen and (min-width: 530px) {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    }
+
+    @media only screen and (min-width: 830px) {
+        grid-template-columns: 65% 1fr;
+
+        .card:nth-of-type(2) .stack-grid {
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        }
+    }
+
+    @include from(l) {
+        grid-template-columns: 1fr;
+    }
+
+    @include from(xl) {
+        grid-template-columns: 65% 1fr;
     }
 
     &.reversed {
@@ -108,30 +164,20 @@
             grid-template-columns: 1fr 65%;
         }
     }
-
-    @media only screen and (min-width: 830px) {
-        grid-template-columns: 65% 1fr;
-
-        .card:nth-of-type(2) .stack-grid {
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        }
-    }
-
-    @include from(l) {
-        grid-template-columns: 1fr;
-    }
-
-    @include from(xl) {
-        grid-template-columns: 65% 1fr;
-    }
 }
 
 .stack-grid {
-    display: grid;
-    width: 100%;
-    gap: 10px;
+    flex: 1;
 
+    display: grid;
+    gap: 10px;
     grid-template-columns: repeat(2, 1fr);
+
+    width: 100%;
+
+    &:has(.tag) {
+        row-gap: 1rem;
+    }
 
     @media only screen and (min-width: 530px) {
         grid-template-columns: repeat(4, 1fr);
@@ -139,6 +185,7 @@
 
     @include from(l) {
         grid-template-columns: repeat(4, 1fr);
+        row-gap: 10px;
     }
 
     @include from(xl) {
