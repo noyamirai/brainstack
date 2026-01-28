@@ -233,7 +233,8 @@ aside {
     }
 }
 
-aside.collapsed {
+aside.collapsed,
+.push-modal--open aside {
     .top-container__title {
         display: none;
     }
@@ -243,7 +244,8 @@ aside.collapsed {
     }
 
     .menu {
-        li::before {
+        li::before,
+        li a::before {
             display: none;
         }
 

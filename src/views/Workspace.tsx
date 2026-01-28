@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PageHeader from "../components/PageHeader";
+import TableSkeleton from "../components/TableSkeleton";
 
 const Workspace: React.FC = () => {
     const [isPanelOpen, setIsPanelOpen] = useState(false);
@@ -79,15 +80,42 @@ const Workspace: React.FC = () => {
             <section className="page-modal">
                 <div className="page-modal__content">
                     <div className="container">
-                        {/* <button
+                        <PageHeader labelLeft="Workspace : : details" />
+
+                        <button
                             type="button"
                             className="page-modal__btn"
                             onClick={togglePanel}
                         >
                             <i className="fa-solid fa-xmark"></i>
-                        </button> */}
+                        </button>
                         <h2>Details</h2>
-                        <p>Coming soon...</p>
+                        <p>Some text here</p>
+
+                        <hr />
+
+                        {/* <div className="table-wrapper">
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Desk</td>
+                                        <td>from Ikea</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vertical monitor</td>
+                                        <td>AOC Curved</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> */}
+
+                        <TableSkeleton amount={3} />
                     </div>
                 </div>
             </section>
