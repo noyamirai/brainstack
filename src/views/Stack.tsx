@@ -458,7 +458,12 @@ const Stack: React.FC = () => {
                         </div>
                         <div className="card">
                             <h3 className="card__label">Certified...</h3>
-                            <ul className="stack-grid"></ul>
+                            <ul className="stack-grid">
+                                <StackItem label="overwatch" icon={<></>} />
+                                <StackItem label="cyberpunk" icon={<></>} />
+                                <StackItem label="avatar" icon={<></>} />
+                                <StackItem label="TWICE" icon={<></>} />
+                            </ul>
                         </div>
                     </section>
                 </div>

@@ -79,10 +79,23 @@
     }
 
     &.reversed {
-        @media only screen and (min-width: 830px) {
+        @media only screen and (min-width: 530px) {
             grid-template-columns: 1fr 65%;
 
             .card:nth-of-type(1) .stack-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card:nth-of-type(2) .stack-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media only screen and (min-width: 830px) {
+            .card:nth-of-type(1) .stack-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+            .card:nth-of-type(2) .stack-grid {
                 grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             }
         }
@@ -118,7 +131,7 @@
     width: 100%;
     gap: 10px;
 
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
 
     @media only screen and (min-width: 530px) {
         grid-template-columns: repeat(4, 1fr);
