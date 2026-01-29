@@ -145,7 +145,7 @@
     th + th,
     td + td {
         border-left: $border-settings;
-        padding-left: 1rem;
+        padding-left: 14px;
     }
 
     th span,
@@ -155,12 +155,13 @@
 
     td:first-of-type,
     th:first-of-type {
-        padding-left: 1rem;
+        padding-left: 14px;
+        padding-right: 14px;
     }
 
     td:last-of-type,
     th:last-of-type {
-        padding-right: 1rem;
+        padding-right: 14px;
     }
 
     tr:nth-child(even) {
