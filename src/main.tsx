@@ -9,6 +9,7 @@ import PageStarterContent from "./storyblok/PageStarterContent";
 import RichTextContent from "./storyblok/RichTextContent";
 import HighlightTextBlock from "./storyblok/HighlightTextBlock";
 import TimelineItemBlok from "./storyblok/TimelineItemBlok";
+import DataTable from "./storyblok/DataTable";
 
 storyblokInit({
     accessToken: import.meta.env.VITE_STORYBLOK_DELIVERY_API_TOKEN,
@@ -22,6 +23,7 @@ storyblokInit({
         rich_text_content: RichTextContent,
         highlight_text_block: HighlightTextBlock,
         timeline_item: TimelineItemBlok,
+        data_table: DataTable,
     },
 });
 

@@ -1,16 +1,98 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PageHeader from "../components/PageHeader";
 import TableSkeleton from "../components/TableSkeleton";
+import usePerceivedLoading from "../hooks/use-perceived-loading";
+import { getStoryblokApi, StoryblokComponent } from "@storyblok/react";
+import SystemErrorMessage from "../components/SystemErrorMessage";
 
 const Workspace: React.FC = () => {
+    const [errorMessage, setErrorMessage] = useState<{
+        title: string;
+        message: string;
+        errorCode: string;
+    }>({
+        title: "",
+        message: "",
+        errorCode: "",
+    });
     const [isPanelOpen, setIsPanelOpen] = useState(false);
+    const [isPanelReady, setIsPanelReady] = useState(false);
 
-    const togglePanel = () => {
-        setIsPanelOpen((prev) => !prev);
+    const [story, setStory] = useState<any>(null);
+    const [requestedType, setRequestedType] = useState<string | null>(null);
+    const [loadedType, setLoadedType] = useState<string | null>(null);
+
+    const [isContentLoading, setIsContentLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
+
+    const isLoading = usePerceivedLoading(isContentLoading, isError, 600);
+
+    const resetView = () => {
+        setStory(null);
+        setIsError(false);
+    };
+
+    const startLoading = () => {
+        setIsContentLoading(true);
+        setIsError(false);
+    };
+
+    const openPanel = () => {
+        startLoading();
+        setIsPanelOpen(true);
 
         // toggle on body as well
-        document.body.classList.toggle("push-modal--open", !isPanelOpen);
+        document.body.classList.add("push-modal--open");
+
+        setIsPanelReady(false);
+        setTimeout(() => setIsPanelReady(true), 600);
     };
+
+    const closePanel = () => {
+        setIsPanelOpen(false);
+
+        // toggle on body as well
+        document.body.classList.remove("push-modal--open");
+        setLoadedType(null);
+
+        setIsPanelReady(false);
+        setTimeout(() => setIsPanelReady(true), 600);
+    };
+
+    useEffect(() => {
+        setIsPanelOpen(false);
+        document.body.classList.remove("push-modal--open");
+
+        startLoading();
+        resetView();
+
+        setRequestedType(null);
+    }, []);
+
+    useEffect(() => {
+        if (!isPanelReady || !isPanelOpen || !requestedType) return;
+
+        setStory(null);
+
+        const api = getStoryblokApi();
+
+        api.get(`cdn/stories/workspace/${requestedType}`, {
+            version: "draft",
+        })
+            .then((res) => {
+                setStory(res.data.story);
+                setLoadedType(requestedType);
+            })
+            .catch(() => {
+                setErrorMessage({
+                    title: "Failed to load content",
+                    message: `An error occurred while fetching the details for /workspace/${requestedType} :(`,
+                    errorCode: `${requestedType.toUpperCase()}_ERR`,
+                });
+                setIsError(true);
+            })
+            .finally(() => setIsContentLoading(false));
+    }, [isPanelReady, isPanelOpen, requestedType]);
 
     return (
         <div className={`main main--panel${isPanelOpen ? " open" : ""}`}>
@@ -42,12 +124,17 @@ const Workspace: React.FC = () => {
                         <div className="workspace-item__info">
                             <div className="card">
                                 <span className="tag green">Battlestation</span>
-                                <p>List of products from my current setup</p>
+                                <p>Setup products</p>
                             </div>
                             <button
                                 type="button"
                                 className="workspace-item__info__btn"
-                                onClick={togglePanel}
+                                onClick={() => {
+                                    if ("setup" === loadedType && story) return;
+
+                                    setRequestedType("setup");
+                                    openPanel();
+                                }}
                             >
                                 <i className="fa-solid fa-chevron-right"></i>
                                 <span>Where did you get that?</span>
@@ -66,7 +153,13 @@ const Workspace: React.FC = () => {
                             <button
                                 type="button"
                                 className="workspace-item__info__btn"
-                                onClick={togglePanel}
+                                onClick={() => {
+                                    if ("pc_anatomy" === loadedType && story)
+                                        return;
+
+                                    setRequestedType("pc_anatomy");
+                                    openPanel();
+                                }}
                             >
                                 <i className="fa-solid fa-chevron-right"></i>
 
@@ -78,44 +171,59 @@ const Workspace: React.FC = () => {
             </div>
 
             <section className="page-modal">
+                <button
+                    type="button"
+                    className="page-modal__btn"
+                    onClick={() => {
+                        closePanel();
+                        resetView();
+                        setRequestedType(null);
+                        setIsContentLoading(true);
+                    }}
+                >
+                    <i className="fa-solid fa-xmark"></i>
+                </button>
+
                 <div className="page-modal__content">
                     <div className="container">
                         <PageHeader labelLeft="Workspace : : details" />
 
-                        <button
-                            type="button"
-                            className="page-modal__btn"
-                            onClick={togglePanel}
-                        >
-                            <i className="fa-solid fa-xmark"></i>
-                        </button>
-                        <h2>Details</h2>
-                        <p>Some text here</p>
+                        {isError && (
+                            <SystemErrorMessage
+                                title={errorMessage.title}
+                                message={errorMessage.message}
+                                errorCode={errorMessage.errorCode}
+                                hasCta={true}
+                                ctatext="Try again"
+                                onCtaClick={() => {
+                                    resetView();
+                                    startLoading();
 
-                        <hr />
+                                    setIsPanelReady(false);
+                                    setTimeout(
+                                        () => setIsPanelReady(true),
+                                        600
+                                    );
+                                }}
+                            />
+                        )}
 
-                        {/* <div className="table-wrapper">
-                            <table className="table">
-                                <thead>
-                                    <tr>
-                                        <th>Item</th>
-                                        <th>Details</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Desk</td>
-                                        <td>from Ikea</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Vertical monitor</td>
-                                        <td>AOC Curved</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div> */}
+                        {isLoading && !isError && (
+                            <>
+                                <h1 className="skeleton">Details</h1>
+                                <p className="skeleton">
+                                    Fetching information...
+                                </p>
+                                <hr />
+                                <TableSkeleton amount={3} />
+                            </>
+                        )}
 
-                        <TableSkeleton amount={3} />
+                        {!isLoading && story && (
+                            <>
+                                <StoryblokComponent blok={story.content} />
+                            </>
+                        )}
                     </div>
                 </div>
             </section>

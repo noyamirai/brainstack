@@ -22,7 +22,7 @@ const SystemErrorMessage: React.FC<Props> = ({
     extraButtons,
 }) => {
     return (
-        <div className="system-message-container">
+        <div className="container system-message-container bt">
             <div className="message">
                 <div className="message__content">
                     <div className="message__heading">
