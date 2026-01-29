@@ -9,7 +9,7 @@ const Stack: React.FC = () => {
                     <PageHeader labelLeft="Stack : : Skills and certifications" />
                     <h1>Current stack</h1>
                     <p>
-                        Throughout my 27 years on earth, I have aquired a range
+                        Throughout my 27 years on earth, I have acquired a range
                         of skills and earned myself several certifications.
                     </p>
 

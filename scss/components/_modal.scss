@@ -162,9 +162,13 @@
         top: 0;
         //width: calc(50% - 3rem);
 
-        width: calc(
-            (50% + 20px + 20px) - (6px) - (1.5rem + 50px + 1.5rem + 0px)
-        );
+        // width: calc(
+        //     (50% + 20px + 20px) - (6px) - (1.5rem + 50px + 1.5rem + 0px)
+        // );
+
+        width: calc((100% - (1.5rem + 50px + 1.5rem + 20px)) / 2);
+
+        // calc((100% - (1.5rem + 50px + 1.5rem + 40px )) - 50%) -> 50% of width that container has?
 
         &::before {
             display: none;
@@ -210,11 +214,17 @@
         }
 
         .container {
-            padding-left: 34px;
+            padding-left: 32px;
 
-            @media only screen and (min-width: 1670px) {
-                padding-left: 0;
+            @include from(l) {
+                max-width: none;
+                width: 100%;
+                // width: 80%;
             }
+
+            // @media only screen and (min-width: 1670px) {
+            //     padding-left: 0;
+            // }
         }
 
         @include from(l) {
@@ -230,7 +240,7 @@
         top: 50%;
         left: 10%;
 
-        transform: translate(calc($btnWidth / 2 * -1), -50%);
+        transform: translate(calc(($btnWidth / 2 * -1) + 1px), -50%);
 
         display: flex;
         align-items: center;
@@ -248,7 +258,7 @@
         @include from(l) {
             left: 0;
 
-            transform: translate(calc($btnWidth / 2 * -1), -50%);
+            transform: translate(calc(($btnWidth / 2 * -1) + 1px), -50%);
         }
 
         i {
