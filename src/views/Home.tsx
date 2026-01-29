@@ -3,7 +3,8 @@ import PageHeader from "../components/PageHeader";
 import { useEffect, useState } from "react";
 import usePerceivedLoading from "../hooks/use-perceived-loading";
 import TimelineItemSkeleton from "../atoms/TimelineItemSkeleton";
-// import ContentSkeleton from "../atoms/ContentSkeleton";
+import SystemErrorMessage from "../components/SystemErrorMessage";
+import { Link } from "react-router-dom";
 
 const Home: React.FC = () => {
     const [story, setStory] = useState<any>(null);
@@ -65,6 +66,22 @@ const Home: React.FC = () => {
                         unless you're super interested.
                     </p>
 
+                    {isError && (
+                        <>
+                            <hr />
+                            <SystemErrorMessage
+                                title="Unable to load lore"
+                                message="Maybe it is struggling to compile all those life events"
+                                errorCode="TIMELINE_LOAD_ERR"
+                                hasCta={true}
+                                ctatext="Try again"
+                                onCtaClick={() => {
+                                    window.location.reload();
+                                }}
+                            />
+                        </>
+                    )}
+
                     <ol className="timeline">
                         {isLoading &&
                             !isError &&
@@ -84,9 +101,18 @@ const Home: React.FC = () => {
                             <hr />
 
                             <p className="ta-center">
-                                Thanks for reading this far! I don't have much
-                                else to offer now..
+                                Thanks for reading this far! Feel free to check
+                                out these other pages:
                             </p>
+
+                            <div className="link-container">
+                                <Link to="/stack" className="link tt-up">
+                                    Stack
+                                </Link>
+                                <Link to="/workspace" className="link tt-up">
+                                    Workspace
+                                </Link>
+                            </div>
                         </>
                     )}
                 </div>

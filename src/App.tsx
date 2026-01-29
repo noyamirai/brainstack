@@ -8,9 +8,12 @@ import Aside from "./components/Aside";
 import Menu from "./components/Menu";
 import Stack from "./views/Stack";
 import Workspace from "./views/Workspace";
+import useScrollToTop from "./hooks/use-scroll-to-top";
 
 const AppLayout: React.FC = () => {
     const { currentPath, currentView } = useCurrentView();
+
+    useScrollToTop();
 
     useEffect(() => {
         // Generate class based on the current path

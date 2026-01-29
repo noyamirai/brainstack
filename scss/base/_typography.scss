@@ -163,6 +163,18 @@ ol {
     color: $secondary-color;
     text-decoration: underline;
     text-transform: lowercase;
+
+    &.tt-up {
+        font-size: 15px;
+    }
+}
+
+.link-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
 }
 
 .tt-up {
